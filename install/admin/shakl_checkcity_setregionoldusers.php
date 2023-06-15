@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && check_bitrix_sessid()) {
     $checker = new PhoneNumberChecker("https://api.regius.name/iface/phone-number.php", "6cc4d547ab0d263c096c9e71beb0fa67a5f4de2d");
 
     // получение списка пользователей
-    $rsUsers = CUser::GetList(($by="ID"), ($order="desc"), Array(), array("SELECT" => array("ID", "UF_BXMAKER_AUPHONE")));
+    $rsUsers = CUser::GetList(($by="ID"), ($order="desc"), Array(), array("SELECT" => array("ID", "UF_BXMAKER_AUPHONE","UF_REGREGION")));
     $i = 0;
     while($arUser = $rsUsers->Fetch()) {
         if (!empty($arUser["UF_REGREGION"])) {
